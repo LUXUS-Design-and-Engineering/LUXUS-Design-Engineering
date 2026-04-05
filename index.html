@@ -72,21 +72,31 @@
     <section id="portfolio" class="py-20 px-10 container mx-auto">
         <h2 class="text-3xl font-bold mb-10 border-l-4 border-blue-600 pl-4">Project Gallery</h2>
 
-        <div class="portfolio-card">
-    <img src="https://github.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/blob/main/images/Screenshot%202026-04-05%20153502.png" 
-         alt="Civil and MEP Design" 
-         style="width:100%; border-radius:10px;">
-    <p>Project: Industrial HVAC System Design</p>
-</div>
-        
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="img-card bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="https://via.placeholder.com/600x400?text=3D+MEP+Model+1" alt="3D MEP Design" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-bold">3D HVAC Coordination</h3>
-                    <p class="text-sm text-gray-600">Complex ductwork layout and clash detection.</p>
-                </div>
+    <div class="group relative bg-white shadow-xl rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-gray-100">
+        
+        <div class="relative h-64 overflow-hidden">
+            <img src="https://raw.githubusercontent.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/main/images/Screenshot%202026-04-05%20153502.png" 
+                 alt="Industrial HVAC System Design" 
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            
+            <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                MEP Design
             </div>
+        </div>
+
+        <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Industrial HVAC System Design</h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                Advanced 3D coordination featuring complex ductwork layout and automated clash detection for seamless site execution.
+            </p>
+            
+            <div class="flex items-center text-blue-600 font-semibold text-sm cursor-pointer hover:text-blue-800">
+                View Detailed Analysis <i class="fas fa-arrow-right ml-2 text-xs"></i>
+            </div>
+        </div>
+    </div>
+</div>   
 
             <div class="img-card bg-white shadow-lg rounded-lg overflow-hidden">
                 <img src="https://via.placeholder.com/600x400?text=2D+Technical+Draft" alt="2D Drafting" class="w-full h-64 object-cover">
