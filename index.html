@@ -5,14 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUXUS DESIGN & ENGINEERING</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
+        /* Smooth scrolling for anchor links */
+        html { scroll-behavior: smooth; }
+
         .gradient-bg { background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%); }
-        .img-card:hover { transform: scale(1.02); transition: all 0.3s ease; }
+        
+        /* Instagram Button Styling */
+        .ig-button {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .ig-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .ig-button i { margin-right: 10px; font-size: 18px; }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        @media (min-width: 768px) { .portfolio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (min-width: 1024px) { .portfolio-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+        /* Card Hover Effects */
+        .portfolio-card {
+            background: #ffffff;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid #f3f4f6;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image-wrapper {
+            height: 16rem;
+            overflow: hidden;
+            position: relative;
+        }
+        .card-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fixed from object-cover */
+            transition: transform 0.5s ease;
+        }
+        .portfolio-card:hover .card-image-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #2563eb;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            z-index: 10;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans">
 
-    <nav class="flex justify-between items-center px-10 py-6 bg-white shadow-sm">
+    <nav class="flex justify-between items-center px-10 py-6 bg-white shadow-sm sticky top-0 z-50">
         <div class="text-2xl font-black tracking-tighter text-slate-800">
             LUXUS <span class="text-blue-600">DESIGN & ENGINEERING</span>
         </div>
@@ -24,254 +100,118 @@
     </nav>
 
     <header class="gradient-bg text-white py-24 px-10 text-center">
-        <h1 class="text-5xl font-bold mb-6">Comprehensive Design & Engineering Solutions: Modeling, Analysis & Executing</h1>
-        <p class="text-xl text-gray-300 max-w-2xl mx-auto">We provide comprehensive multi-disciplinary engineering and BIM services, 
-            specializing in Civil (Structural & Architectural) and MEP (Mechanical, Electrical, and Plumbing). Our mission is to transform complex design concepts into high-precision digital twins that are ready for construction. 
-            By combining technical analysis—such as thermal load calculations and structural integrity—with advanced 3D modeling, we deliver integrated solutions that eliminate site conflicts, optimize material usage, and ensure seamless project execution from start to finish.</br>
-            </br>
-            >2D Drafting & Detailing: Comprehensive shop drawings and schematic layouts using AutoCAD.</br>
-            >3D BIM Modeling: High-LOD, data-rich MEP models developed in Revit for seamless coordination.</br>
-            >Structural & Civil Design: Drafting and modeling of structural frameworks and civil layouts to ensure technical accuracy and safety.</br>
-            >MEP Engineering & Analysis: Expert heating/cooling load calculations (Carrier HAP), and precision duct/pipe sizing for optimized system performance.</br>
-            >Estimation & Scheduling: Accurate Bill of Quantities (BOQ) and equipment schedules extracted directly from BIM data for precise budgeting.</br>
-            >Interdisciplinary Coordination: Advanced clash detection to identify and resolve overlaps between MEP, Structural, and Architectural elements before construction begins.</br>
-
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Comprehensive Design & Engineering Solutions</h1>
+        <p class="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            We provide multi-disciplinary engineering and BIM services, specializing in Civil and MEP. 
+            Our mission is to transform complex designs into high-precision digital twins ready for construction.
         </p>
-
-        <style>
-            .ig-button {
-  display: inline-flex;
-  align-items: center;
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-  color: white !important;
-  padding: 10px 20px;
-  border-radius: 50px; /* Makes it a pill shape */
-  text-decoration: none;
-  font-family: 'Arial', sans-serif;
-  font-weight: bold;
-  font-size: 14px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* The Instagram Icon spacing */
-.ig-button i {
-  font-size: 20px;
-  margin-right: 10px;
-}
-
-/* Hover effect: Button grows and glows when touched */
-.ig-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  color: white;
-}
-
-
-            /* Container for the Portfolio Grid */
-.portfolio-grid {
-    display: grid;
-    gap: 2rem;
-}
-
-@media (min-width: 768px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .portfolio-grid { grid-template-columns: repeat(3, 1fr); } }
-
-/* The Main Card Style */
-.portfolio-card {
-    background: #ffffff;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    border: 1px solid #f3f4f6;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.portfolio-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-/* Image Handling */
-.card-image-wrapper {
-    height: 16rem;
-    overflow: hidden;
-    position: relative;
-}
-
-.card-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-cover: cover;
-    transition: transform 0.5s ease;
-}
-
-.portfolio-card:hover .card-image-wrapper img {
-    transform: scale(1.1);
-}
-
-/* Category Badge */
-.category-badge {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: #2563eb; /* Professional Blue */
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    z-index: 10;
-}
-
-/* Text Content */
-.card-content {
-    padding: 1.5rem;
-}
-
-.card-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #1f2937;
-    margin-bottom: 0.5rem;
-}
-
-.card-description {
-    font-size: 0.875rem;
-    color: #4b5563;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.card-link {
-    color: #2563eb;
-    font-weight: 600;
-    font-size: 0.875rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-.card-link:hover {
-    color: #1e40af;
-}
-
-            
-        </style>
+        <div class="mt-8 text-sm text-gray-400 grid md:grid-cols-2 gap-2 max-w-xl mx-auto text-left">
+            <span><i class="fas fa-check text-blue-500 mr-2"></i> 2D Drafting & Detailing</span>
+            <span><i class="fas fa-check text-blue-500 mr-2"></i> 3D BIM Modeling</span>
+            <span><i class="fas fa-check text-blue-500 mr-2"></i> Mechanical & Electrical</span>
+            <span><i class="fas fa-check text-blue-500 mr-2"></i> Structural & Civil Design</span>
+            <span><i class="fas fa-check text-blue-500 mr-2"></i> Sheduling & Cost estimation</span>
+            <span><i class="fas fa-check text-blue-500 mr-2"></i> Design & Engineering (Conceptual to Implimentation)</span>
+        </div>
+        <p> Revit, AutoCAD, Navisworks, Career HAP, McQuay Duct Sizer, McQuay Pipe Sizer, Etc.</p>
     </header>
 
     <section id="portfolio" class="py-20 px-10 container mx-auto">
         <h2 class="text-3xl font-bold mb-10 border-l-4 border-blue-600 pl-4">Project Gallery</h2>
 
         <div class="portfolio-grid">
-
-    <div class="portfolio-card">
-        <div class="card-image-wrapper">
-            <div class="category-badge">A/C Design</div>
-            <img src="https://raw.githubusercontent.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/main/images/Screenshot%202026-04-05%20153502.png" alt="Industrial HVAC">
-        </div>
-        <div class="card-content">
-            <h3 class="card-title">Typical floor A/C Design</h3>
-            <p class="card-description">Air Conditionig design by FCU of G+8 building typical floor</p>
-            <a href="#" class="card-link">View Detailed Analysis <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-        </div>
-    </div>
-
-    <div class="portfolio-card">
-        <div class="card-image-wrapper">
-            <div class="category-badge">Civil Engineering</div>
-            <img src="YOUR_GITHUB_RAW_URL_HERE" alt="Civil Project">
-        </div>
-        <div class="card-content">
-            <h3 class="card-title">Structural Foundation Analysis</h3>
-            <p class="card-description">Comprehensive soil analysis and reinforced concrete design for industrial sheds.</p>
-            <a href="#" class="card-link">View Detailed Analysis <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-        </div>
-    </div>
-
-</div>
-
-            <div class="img-card bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="https://via.placeholder.com/600x400?text=2D+Technical+Draft" alt="2D Drafting" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-bold">2D Electrical Schematics</h3>
-                    <p class="text-sm text-gray-600">Detailed wiring and power distribution plans.</p>
+            <div class="portfolio-card">
+                <div class="card-image-wrapper">
+                    <div class="category-badge">A/C Design</div>
+                    <img src="https://raw.githubusercontent.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/main/images/Screenshot%202026-04-05%20153502.png" alt="Industrial HVAC">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Typical floor A/C Design</h3>
+                    <p class="text-sm text-gray-600 mb-4">Air Conditioning design by FCU of G+8 building typical floor.</p>
+                    <a href="#contact" class="text-blue-600 font-bold flex items-center hover:text-blue-800 transition">
+                        To Know More <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                    </a>
                 </div>
             </div>
 
-            <div class="img-card bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="https://via.placeholder.com/600x400?text=Plumbing+Layout" alt="Plumbing Layout" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-bold">Plumbing & Piping Design</h3>
-                    <p class="text-sm text-gray-600">High-precision isometric piping models.</p>
+            <div class="portfolio-card">
+                <div class="card-image-wrapper">
+                    <div class="category-badge">Civil Engineering</div>
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=600" alt="Civil Project">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Structural Foundation</h3>
+                    <p class="text-sm text-gray-600 mb-4">Comprehensive soil analysis and reinforced concrete design for industrial sheds.</p>
+                    <a href="#contact" class="text-blue-600 font-bold flex items-center hover:text-blue-800 transition">
+                        To Know More <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                    </a>
                 </div>
             </div>
-
-            <div class="img-card bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="https://via.placeholder.com/600x400?text=BIM+Project+4" alt="BIM Modeling" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-bold">Revit BIM Integration</h3>
-                    <p class="text-sm text-gray-600">Full building information modeling services.</p>
+            
+            <div class="portfolio-card">
+                <div class="card-image-wrapper">
+                    <div class="category-badge">BIM</div>
+                    <img src="https://images.unsplash.com/photo-1503387762-592dea58ef21?auto=format&fit=crop&q=80&w=600" alt="BIM Model">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Interdisciplinary Coordination</h3>
+                    <p class="text-sm text-gray-600 mb-4">Clash detection between MEP and Structural elements using Navisworks.</p>
+                    <a href="#contact" class="text-blue-600 font-bold flex items-center hover:text-blue-800 transition">
+                        To Know More <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="bg-slate-800 text-white py-16 px-10">
-        <div class="container mx-auto grid md:grid-cols-3 gap-12 text-center">
-            <div>
-                <div class="text-blue-400 text-4xl mb-4">📐</div>
-                <h3 class="text-xl font-bold mb-2">2D Drafting</h3>
-                <p class="text-gray-400">Accurate shop drawings and blueprints in AutoCAD.</p>
+    <section id="services" class="bg-slate-800 text-white py-20 px-10">
+        <div class="container mx-auto grid md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
+            <div class="hover:scale-105 transition">
+                <div class="text-blue-400 text-4xl mb-4"><i class="fas fa-pencil-ruler"></i></div>
+                <h3 class="text-lg font-bold">2D Drafting</h3>
             </div>
-            <div>
-                <div class="text-blue-400 text-4xl mb-4">🧊</div>
-                <h3 class="text-xl font-bold mb-2">3D Modeling</h3>
-                <p class="text-gray-400">Advanced Revit modeling for all MEP trades.</p>
+            <div class="hover:scale-105 transition">
+                <div class="text-blue-400 text-4xl mb-4"><i class="fas fa-cube"></i></div>
+                <h3 class="text-lg font-bold">3D Modeling</h3>
             </div>
-            <div>
-                <div class="text-blue-400 text-4xl mb-4">✅</div>
-                <h3 class="text-xl font-bold mb-2">Clash Reports</h3>
-                <p class="text-gray-400">Ensuring zero interference before construction.</p>
+            <div class="hover:scale-105 transition">
+                <div class="text-blue-400 text-4xl mb-4"><i class="fas fa-shield-halved"></i></div>
+                <h3 class="text-lg font-bold">Clash Reports</h3>
             </div>
-            <div>
-                <div class="text-blue-400 text-4xl mb-4">📊</div>
-                <h3 class="text-xl font-bold mb-2">Scheduling & Estimation</h3>
-                <p class="text-gray-400">Accurate Scheduling & Cost estimation.</p>
+            <div class="hover:scale-105 transition">
+                <div class="text-blue-400 text-4xl mb-4"><i class="fas fa-file-invoice-dollar"></i></div>
+                <h3 class="text-lg font-bold">Estimation</h3>
             </div>
-            <div>
-                <div class="text-blue-400 text-4xl mb-4">🔍</div>
-                <h3 class="text-xl font-bold mb-2">Analysis</h3>
-                <p class="text-gray-400">Comprehensive load calculations and system performance optimization.</p>
+            <div class="hover:scale-105 transition">
+                <div class="text-blue-400 text-4xl mb-4"><i class="fas fa-magnifying-glass-chart"></i></div>
+                <h3 class="text-lg font-bold">Analysis</h3>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="py-16 bg-white text-center border-t">
-    <h2 class="text-2xl font-bold mb-4">Work with LUXUS</h2>
-    <p class="text-gray-600 mb-6 px-4">Ready to bring engineering excellence to your next project?</p>
-    
-    <a href="mailto:luxusengineering25@gmail.com?subject=Inquiry: MEP Design Services&body=Hello Luxus Team,%0D%0A%0D%0AI would like to discuss a new project regarding..." 
-       class="inline-block bg-blue-600 text-white px-10 py-4 rounded-full font-bold hover:bg-blue-700 transition shadow-lg active:scale-95">
-       E-Mail
-    </a>
+    <footer id="contact" class="py-20 bg-white text-center border-t">
+        <h2 class="text-3xl font-bold mb-4">Work with LUXUS</h2>
+        <p class="text-gray-600 mb-10 px-4">Ready to bring engineering excellence to your next project?</p>
+        
+        <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+            <a href="mailto:luxusengineering25@gmail.com?subject=Inquiry" 
+               class="bg-blue-600 text-white px-10 py-4 rounded-full font-bold hover:bg-blue-700 transition shadow-lg active:scale-95">
+                <i class="fas fa-envelope mr-2"></i> E-Mail
+            </a>
 
-    <a href="tel:+9188631550" 
-           class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition active:scale-95">
-           Phone
-        </a>
+            <a href="tel:+9188631550" 
+               class="border-2 border-blue-600 text-blue-600 px-10 py-4 rounded-full font-bold hover:bg-blue-50 transition active:scale-95">
+                <i class="fas fa-phone mr-2"></i> Phone
+            </a>
 
-        <a href="https://www.instagram.com/luxus_design_and_engineering" target="_blank" rel="noopener noreferrer" class="ig-button">
-  <i class="fab fa-instagram"></i>
-  <span>Follow on Instagram</span>
-</a>
-    
-    <p class="mt-10 text-xs text-gray-400 uppercase tracking-widest">&copy; 2025 Luxus Design & Engineering</p>
-</footer>
+            <a href="https://www.instagram.com/luxus_design_and_engineering" target="_blank" class="ig-button">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+        </div>
+        
+        <p class="mt-16 text-xs text-gray-400 uppercase tracking-widest">&copy; 2026 Luxus Design & Engineering</p>
+    </footer>
 
 </body>
 </html>
