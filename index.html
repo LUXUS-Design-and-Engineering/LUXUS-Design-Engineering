@@ -34,8 +34,8 @@
         .card-image-wrapper { height: 16rem; overflow: hidden; position: relative; }
         
         /* Hide scrollbars for the slider */
-        #slider::-webkit-scrollbar { display: none; }
-        #slider { -ms-overflow-style: none; scrollbar-width: none; }
+        .slider-container::-webkit-scrollbar { display: none; }
+        .slider-container { -ms-overflow-style: none; scrollbar-width: none; }
 
         .category-badge {
             position: absolute; top: 1rem; left: 1rem;
@@ -47,25 +47,26 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const slider = document.getElementById('slider');
-            if (!slider) return;
+            const sliders = document.querySelectorAll('.slider-container');
+            
+            sliders.forEach(slider => {
+                let isPaused = false;
 
-            let isPaused = false;
+                // Auto-slide logic
+                setInterval(() => {
+                    if (isPaused) return;
+                    const slideWidth = slider.clientWidth;
+                    if (slider.scrollLeft + slideWidth >= slider.scrollWidth - 5) {
+                        slider.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
+                    }
+                }, 3000);
 
-            // Auto-slide logic
-            const autoSlide = setInterval(() => {
-                if (isPaused) return;
-                const slideWidth = slider.clientWidth;
-                if (slider.scrollLeft + slideWidth >= slider.scrollWidth - 5) {
-                    slider.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
-                }
-            }, 3000);
-
-            // Pause on hover
-            slider.addEventListener('mouseenter', () => isPaused = true);
-            slider.addEventListener('mouseleave', () => isPaused = false);
+                // Pause on hover
+                slider.addEventListener('mouseenter', () => isPaused = true);
+                slider.addEventListener('mouseleave', () => isPaused = false);
+            });
         });
     </script>
 </head>
@@ -96,7 +97,7 @@
             <span><i class="fas fa-check text-blue-500 mr-2"></i> Scheduling & Cost Estimation</span>
             <span><i class="fas fa-check text-blue-500 mr-2"></i> Conceptual to Implementation</span>
         </div>
-        <p class="mt-8 text-xs font-mono text-blue-300">Tools: Revit, AutoCAD, Navisworks, Career HAP, McQuay</p>
+        <p class="mt-8 text-xs font-mono text-blue-300">Tools: Revit, AutoCAD, Navisworks, Carrier HAP, McQuay</p>
     </header>
 
     <section id="portfolio" class="py-20 px-10 container mx-auto">
@@ -106,20 +107,18 @@
             <div class="portfolio-card">
                 <div class="card-image-wrapper">
                     <div class="category-badge">HVAC</div>
-                    <div id="slider" class="flex overflow-x-auto snap-x snap-mandatory h-full">
+                    <div class="slider-container flex overflow-x-auto snap-x snap-mandatory h-full">
                         <div class="min-w-full h-full snap-center">
-                            <img src="https://github.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/blob/main/images/Airconditioning.png" 
-                                 alt="Industrial HVAC" class="w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/main/images/Airconditioning.png?raw=true" alt="AC" class="w-full h-full object-cover">
                         </div>
                         <div class="min-w-full h-full snap-center">
-                            <img src="https://raw.githubusercontent.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/main/images/Ventilation.png?raw=true" 
-                                 alt="Ventilation Design" class="w-full h-full object-cover">
+                            <img src="https://raw.githubusercontent.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/main/images/Ventilation.png?raw=true" alt="Ventilation Design" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2 text-gray-800">2D HVAC Drafting</h3>
-                    <p class="text-sm text-gray-600 mb-4">Detailed AC & Ventilation designs for G+8 typical floors.</p>
+                    <p class="text-sm text-gray-600 mb-4">Detailed AC & Ventilation designs.</p>
                     <a href="#contact" class="text-blue-600 font-bold flex items-center hover:translate-x-1 transition-transform">
                         Know More <i class="fas fa-arrow-right ml-2 text-xs"></i>
                     </a>
@@ -128,32 +127,52 @@
 
             <div class="portfolio-card">
                 <div class="card-image-wrapper">
-                    <div class="category-badge">Civil Engineering</div>
-                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=600" alt="Civil Project" class="w-full h-full object-cover">
+                    <div class="category-badge">Plumbing</div>
+                    <div class="slider-container flex overflow-x-auto snap-x snap-mandatory h-full">
+                        <div class="min-w-full h-full snap-center">
+                            <img src="https://raw.githubusercontent.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/main/images/Water%20supply.png?raw=true" alt="Water Supply" class="w-full h-full object-cover">
+                        </div>
+                        <div class="min-w-full h-full snap-center">
+                            <img src="https://raw.githubusercontent.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/main/images/Water%20supply%201.png?raw=true" alt="Water Supply" class="w-full h-full object-cover">
+                        </div>
+                        <div class="min-w-full h-full snap-center">
+                            <img src="https://raw.githubusercontent.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/main/images/Drainage.png?raw=true" alt="Drainage" class="w-full h-full object-cover">
+                        </div>
+                    </div>
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2 text-gray-800">Structural Foundation</h3>
-                    <p class="text-sm text-gray-600 mb-4">Soil analysis and reinforced concrete design for industrial sheds.</p>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">2D Plumbing Drafting</h3>
+                    <p class="text-sm text-gray-600 mb-4">Detailed Water supply & Drainage designs.</p>
                     <a href="#contact" class="text-blue-600 font-bold flex items-center hover:translate-x-1 transition-transform">
                         Know More <i class="fas fa-arrow-right ml-2 text-xs"></i>
                     </a>
                 </div>
             </div>
-            
+
             <div class="portfolio-card">
                 <div class="card-image-wrapper">
-                    <div class="category-badge">BIM</div>
-                    <img src="https://images.unsplash.com/photo-1503387762-592dea58ef21?auto=format&fit=crop&q=80&w=600" alt="BIM Model" class="w-full h-full object-cover">
+                    <div class="category-badge">Fire fighting</div>
+                    <div class="slider-container flex overflow-x-auto snap-x snap-mandatory h-full">
+                        <div class="min-w-full h-full snap-center">
+                            <img src="https://raw.githubusercontent.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/main/images/Fire%20fighting.png?raw=true" alt="Fire fighting" class="w-full h-full object-cover">
+                        </div>
+                        <div class="min-w-full h-full snap-center">
+                            <img src="https://raw.githubusercontent.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/main/images/Fire%20fighting%201.png?raw=true" alt="Fire fighting" class="w-full h-full object-cover">
+                        </div>
+                        <div class="min-w-full h-full snap-center">
+                            <img src="https://raw.githubusercontent.com/LUXUS-Design-and-Engineering/LUXUS-Design-Engineering/main/images/Fire%20fighting%202.png?raw=true" alt="Fire fighting" class="w-full h-full object-cover">
+                        </div>
+                    </div>
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2 text-gray-800">Coordination</h3>
-                    <p class="text-sm text-gray-600 mb-4">Clash detection between MEP and Structural elements via Navisworks.</p>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">2D Fire fighting Drafting</h3>
+                    <p class="text-sm text-gray-600 mb-4">Detailed Firefighting designs.</p>
                     <a href="#contact" class="text-blue-600 font-bold flex items-center hover:translate-x-1 transition-transform">
                         Know More <i class="fas fa-arrow-right ml-2 text-xs"></i>
                     </a>
                 </div>
             </div>
-        </div>
+
     </section>
 
     <section id="services" class="bg-slate-800 text-white py-20 px-10">
@@ -192,11 +211,10 @@
             <a href="tel:+9188631550" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition">
                 <i class="fas fa-phone mr-2"></i> Phone
             </a>
-            <a href="https://www.linkedin.com/company/113944162/admin/page-posts/published/" target="_blank" 
-              class="bg-[#0077b5] text-white px-8 py-3 rounded-full font-bold hover:bg-[#005582] transition shadow-lg active:scale-95">
-              <i class="fab fa-linkedin mr-2"></i> LinkedIn
+            <a href="https://www.linkedin.com/company/113944162/" target="_blank" class="bg-[#0077b5] text-white px-8 py-3 rounded-full font-bold hover:bg-[#005582] transition shadow-lg">
+                <i class="fab fa-linkedin mr-2"></i> LinkedIn
             </a>
-            <a href="https://www.instagram.com/luxus_design_and_engineering" target="_blank" class="ig-button">
+            <a href="https://www.instagram.com/luxus_design_and_engineering/" target="_blank" class="ig-button">
                 <i class="fab fa-instagram mr-2"></i> Instagram
             </a>
         </div>
